@@ -1,0 +1,11 @@
+button {
+  margin: 10px;
+}
+
+div{
+    margin-top:5px;
+    margin-bottom:5px;
+}
+.ng-invalid.ng-touched:not(form) {
+    border: 2px solid red;
+}

@@ -1,0 +1,20 @@
+
+
+.active{
+    color: white !important;
+    font-weight: bolder;
+}
+
+img{
+    height: 40px;
+    width: 40px;
+}
+
+.jumbotron, ::ng-deep  body {
+    color: white;
+    background-color: black;
+}
+
+li{
+    cursor: pointer;
+}

@@ -1,0 +1,99 @@
+<div class="container col-md-5">
+  <div [hidden]="submitted">
+    <h1>Template Driven Form</h1>
+    <form (ngSubmit)="onSubmit(userForm)" #userForm="ngForm" novalidate="">
+
+      <div class="form-group">
+        <label for="name">Nombre *</label>
+        <input type="text" class="form-control" id="name" required [(ngModel)]="myUser.name" name="name" #name="ngModel"
+          minlength="5">
+        <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+          <div *ngIf="name.errors?.required">
+            Este campo es requerido.
+          </div>
+          <div *ngIf="name.errors?.minlength">
+            Por lo menos {{ name.errors.minlength.requiredLength}} caracteres.
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="text" class="form-control" id="email" [(ngModel)]="myUser.email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+          #email=ngModel>
+        <div [hidden]="email.valid || email.pristine" class="alert alert-danger">
+          <div *ngIf="email.errors?.pattern">
+            El email es incorrecto. Debe contener @ y .
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="form-group">
+        <label for="color">Color *</label>
+        <select class="form-control" id="color" required [(ngModel)]="myUser.color" name="color" #color="ngModel">
+          <option *ngFor="let color of colors" [value]="color">{{color.color}}</option>
+        </select>
+        <div [hidden]="color.valid || color.pristine" class="alert alert-danger">
+          Color es obligatorio
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div> <label>Sexo</label></div>
+        <div class="custom-control custom-radio custom-control-inline" *ngFor="let item of sexKeys2">
+          <input type="radio" id="sexo{{item}}" [(ngModel)]="myUser.sex" [value]="item" name="sex" class="custom-control-input">
+          <label class="custom-control-label" for="sexo{{item}}">{{item}}</label>
+        </div>
+      </div>
+
+
+      <div class="form-group">
+        <div> <label>Acepta</label></div>
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" required [(ngModel)]="myUser.isOk" name="isOk" class="custom-control-input" id="customCheck1">
+          <label class="custom-control-label" for="customCheck1">Acepta las condiciones</label>
+        </div>
+      </div>
+
+
+
+
+      <button type="submit" class="btn btn-success" [disabled]="!userForm.form.valid">Enviar</button>
+      <button type="submit" class="btn btn-success">Enviar Test</button>
+
+      <button type="button" class="btn btn-default" (click)="userForm.reset()">Reset User</button>
+
+      <button type="button" class="btn btn-default" (click)="newUser()">Nuevo Usuario</button>
+
+      <div>
+        {{myUser |json }}
+      </div>
+
+
+    </form>
+  </div>
+
+  <div [hidden]="!submitted">
+    <h2>Enviaste lo siguiente:</h2>
+    <div class="row">
+      <div class="col-xs-3">Name: </div>
+      <div class="col-xs-9">{{ myUser.name }}</div>
+    </div>
+    <div class="row">
+      <div class="col-xs-3">Email: </div>
+      <div class="col-xs-9">{{ myUser.email }}</div>
+    </div>
+    <div class="row">
+      <div class="col-xs-3">color: </div>
+      <div class="col-xs-9">{{ myUser.color.color }}</div>
+    </div>
+    <div class="row">
+      <div class="col-xs-3">sexo: </div>
+      <div class="col-xs-9">{{ myUser.sex }}</div>
+    </div>
+    <br>
+    <button class="btn btn-primary" (click)="submitted=false">Editar</button>
+  </div>
+</div>
