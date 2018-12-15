@@ -1,5 +1,9 @@
 # Angular 7 - Formularios
 
+Tutorial para crear de 0 los dos tipos de formulario que hay en Angular. Ver [demo](https://jolugama.com/apps/angularTest/).
+
+Para descargar el código fuente, [código github](https://jolugama.com/apps/angularTest/).
+
 ## 1. Setup: Crear nuevo proyecto
 
 Lo primero de todo es crear un proyecto angular, en este caso, angular 7, funciona en todas las versiones anteriores.
