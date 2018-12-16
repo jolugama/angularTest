@@ -200,8 +200,61 @@ Pulsa al botón login, saldrá un error con un link de settings. Pincha el link.
 
 En allowed Callback URLs añade: `http://localhost:4200/callback`. Pincha en save changes y vuelve a pulsar en login.
 
+
+## 5. Seguridad, protegiendo vistas con guards
+
+Los `guards` hacen que determinadas áreas de nuestra aplicación web estén protegidas y solo puedan ser accedidas por determinados tipos de usuarios.
+
+
 Añade la página protegida
 
 ```bash
- ng g c pages/protegida
+$ ng g c pages/protegida
 ```
+
+Genera el guard
+
+```bash
+$ ng g g services/auth
+```
+
+Crea la ruta y vincula el guard
+
+```typescript
+...
+  {
+    path: 'protegida',
+    component:   ProtegidaComponent,
+    canActivate: [AuthGuard]
+  },
+...
+
+```
+
+Haz una modificación del guard creado, indica true si es autenticado con auth y false por defecto.
+
+**src/app/services/auth.guard.ts**
+```typescript
+import { AuthService } from './auth.service';
+...
+  constructor(private auth: AuthService) { }
+...
+
+  canActivate(
+    next: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
+
+    if (this.auth.isAuthenticated()) {
+      return true;
+    }
+    console.log('no puedes acceder, acceso denegado');
+    // aquí añadir una modal. Yo uso sweet alert 2. https://sweetalert2.github.io
+    return false;
+
+  }
+```
+
+y esto es todo, ya puedes probar a entrar a la página protegida, logueado, y sin loguear.
+
+
+

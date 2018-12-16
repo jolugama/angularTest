@@ -5,6 +5,8 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
 import { TemplateDrivenFormsComponent } from './pages/template-driven-forms/template-driven-forms.component';
 import { ReactiveFormsComponent } from './pages/reactive-forms/reactive-forms.component';
 import { ReactiveForms2Component } from './pages/reactive-forms2/reactive-forms.component';
+import { ProtegidaComponent } from './pages/protegida/protegida.component';
+import { AuthGuard } from './services/auth.guard';
 
 
 
@@ -25,6 +27,12 @@ const routes: Routes = [
     path: 'reactive2Forms',
     component: ReactiveForms2Component
   },
+  {
+    path: 'protegida',
+    component:   ProtegidaComponent,
+    canActivate: [AuthGuard]
+  },
+
   {
     path: '',
     redirectTo: '/home',
