@@ -1,3 +1,12 @@
-<p>
-  protegida works!
-</p>
+<div class="container" *ngIf="profile">
+
+  <div *ngFor="let key of objectKeys(profile)">
+    <div *ngIf="key!=='picture'">
+      {{key + ' : ' + profile[key]}}
+    </div>
+    <div *ngIf="key==='picture'">
+      <img [src]="profile[key]" alt="">
+    </div>
+  </div>
+  
+</div>

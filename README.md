@@ -257,4 +257,83 @@ import { AuthService } from './auth.service';
 y esto es todo, ya puedes probar a entrar a la página protegida, logueado, y sin loguear.
 
 
-## 6. 
+## 6. Obtener el perfil de usuario que inició
+
+En este paso, mostramos en la ruta protegida al información que nos devuelve auth.
+
+Para ello debemos modificar nuestro servicio auth:
+
+**src/app/services/auth.service.ts**
+
+```typescript
+...
+  auth0 = new auth0.WebAuth({
+    clientID: 'fBoktnHxX5204cgdGLGN1xxGvO0Cxxx',
+    domain: 'jolugama.eu.auth0.com',
+    responseType: 'token id_token',
+    redirectUri: 'http://localhost:4200/callback',
+    scope: 'openid profile' // <---- añade profile
+  });
+  userProfile: any; // <---- añade 
+...
+
+  public getProfile(cb): void {
+    if (!this._accessToken) {
+      throw new Error('Access Token must exist to fetch profile');
+    }
+
+    const self = this;
+    this.auth0.client.userInfo(this._accessToken, (err, profile) => {
+      if (profile) {
+        self.userProfile = profile;
+      }
+      cb(err, profile);
+    });
+  }
+
+```
+
+Lo segundo es llamar a profile desde el componente protegido
+
+**src/app/pages/protegida/protegida.component.ts**
+
+```typescript
+...
+  profile: any;
+  objectKeys = Object.keys;
+  constructor(public auth: AuthService) { }
+
+  ngOnInit() {
+    if (this.auth.userProfile) {
+      this.profile = this.auth.userProfile;
+    } else {
+      this.auth.getProfile((err, profile) => {
+        this.profile = profile;
+        console.log(profile);
+      });
+    }
+  }
+
+
+```
+
+y en el html añadimos esto:
+
+```html
+<div class="container" *ngIf="profile">
+
+  <div *ngFor="let key of objectKeys(profile)">
+    <div *ngIf="key!=='picture'">
+      {{key + ' : ' + profile[key]}}
+    </div>
+    <div *ngIf="key==='picture'">
+      <img [src]="profile[key]" alt="">
+    </div>
+  </div>
+  
+</div>
+
+```
+
+incorpora unos estilos y listo!.
+
