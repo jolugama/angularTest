@@ -257,4 +257,4 @@ import { AuthService } from './auth.service';
 y esto es todo, ya puedes probar a entrar a la página protegida, logueado, y sin loguear.
 
 
-
+## 6. 
