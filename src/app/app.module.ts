@@ -11,6 +11,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { ReactiveFormsComponent } from './pages/reactive-forms/reactive-forms.component';
 import { ReactiveForms2Component } from './pages/reactive-forms2/reactive-forms.component';
+import { ProtegidaComponent } from './pages/protegida/protegida.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { ReactiveForms2Component } from './pages/reactive-forms2/reactive-forms.
     HomeComponent,
     PageNotFoundComponent,
     ReactiveFormsComponent,
-    ReactiveForms2Component
+    ReactiveForms2Component,
+    ProtegidaComponent
   ],
   imports: [
     BrowserModule,

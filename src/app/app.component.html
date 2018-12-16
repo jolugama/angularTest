@@ -33,15 +33,16 @@
       <li class="nav-item">
         <a class="nav-link" routerLink="/home" routerLinkActive="active">Inicio</a>
       </li>
-      
+
       <li class="nav-item dropdown" routerLinkActive="active">
-        <a class="nav-link dropdown-toggle"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+          aria-expanded="false">
           Forms
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" routerLink="/templateForms" >Template Driven</a>
-          <a class="dropdown-item" routerLink="/reactiveForms" >Reactive</a>
-          <a class="dropdown-item" routerLink="/reactive2Forms" >Reactive formBuilder</a>
+          <a class="dropdown-item" routerLink="/templateForms">Template Driven</a>
+          <a class="dropdown-item" routerLink="/reactiveForms">Reactive</a>
+          <a class="dropdown-item" routerLink="/reactive2Forms">Reactive formBuilder</a>
         </div>
       </li>
 
@@ -50,6 +51,14 @@
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form> -->
+    <button class="btn btn-primary btn-margin" *ngIf="!auth.isAuthenticated()" (click)="auth.login()">
+      Log In
+    </button>
+
+    <button class="btn btn-primary btn-margin" *ngIf="auth.isAuthenticated()" (click)="auth.logout()">
+      Log Out
+    </button>
+
   </div>
 </nav>
 
