@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
 declare const require: any;
 
 @Component({
@@ -9,13 +10,21 @@ declare const require: any;
 
 export class VirtualScrollComponent implements OnInit {
   emojiList: string[];
-
+  @ViewChild(CdkVirtualScrollViewport) viewport: CdkVirtualScrollViewport;
 
   constructor() {
     this.emojiList = require('../../data/emoji.json');
   }
 
   ngOnInit() {
+  }
+
+  irInicio() {
+    this.viewport.scrollToIndex(0);
+  }
+
+  irFinal() {
+    this.viewport.scrollToIndex(this.emojiList.length);
   }
 
 }

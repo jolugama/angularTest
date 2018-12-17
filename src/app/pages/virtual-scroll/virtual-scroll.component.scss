@@ -1,0 +1,35 @@
+cdk-virtual-scroll-viewport{
+  height: 400px;
+  max-width: 400px;
+  background-color: #5c7070;
+  margin: 0 auto;
+  flex-grow: 1;
+  overflow-y: scroll;
+  text-align: center;
+  border-radius: 16px;
+
+  div {
+    padding: 5px;
+    height: 80px;
+
+    animation-duration: 3s;
+    animation-delay: 2s;
+    animation-iteration-count: infinite;
+  }
+  .emoji{
+    font-size: 4em;
+    
+
+    animation-duration: 3s;
+    animation-delay: 2s;
+    animation-iteration-count: infinite;
+  }
+}
+
+.btn{
+    margin:5px;
+
+    animation-duration: 3s;
+    animation-delay: 2s;
+    animation-iteration-count: infinite;
+}
