@@ -7,6 +7,7 @@ import { ReactiveFormsComponent } from './pages/reactive-forms/reactive-forms.co
 import { ReactiveForms2Component } from './pages/reactive-forms2/reactive-forms.component';
 import { ProtegidaComponent } from './pages/protegida/protegida.component';
 import { AuthGuard } from './services/auth.guard';
+import { VirtualScrollComponent } from './pages/virtual-scroll/virtual-scroll.component';
 
 
 
@@ -31,6 +32,10 @@ const routes: Routes = [
     path: 'protegida',
     component:   ProtegidaComponent,
     canActivate: [AuthGuard]
+  },
+  {
+    path: 'virtualScroll',
+    component:   VirtualScrollComponent
   },
 
   {

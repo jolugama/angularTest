@@ -12,6 +12,7 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
 import { ReactiveFormsComponent } from './pages/reactive-forms/reactive-forms.component';
 import { ReactiveForms2Component } from './pages/reactive-forms2/reactive-forms.component';
 import { ProtegidaComponent } from './pages/protegida/protegida.component';
+import { VirtualScrollComponent } from './pages/virtual-scroll/virtual-scroll.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { ProtegidaComponent } from './pages/protegida/protegida.component';
     PageNotFoundComponent,
     ReactiveFormsComponent,
     ReactiveForms2Component,
-    ProtegidaComponent
+    ProtegidaComponent,
+    VirtualScrollComponent
   ],
   imports: [
     BrowserModule,
