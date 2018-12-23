@@ -4,11 +4,11 @@
 </div>
 <div>
   <button (click)="irInicio()" class="btn btn-primary">Ir inicio</button>
-  <button (click)="irFinal()" class="btn btn-primary ">Ir final</button>
+  <button (click)="irFinal()" class="btn btn-primary">Ir final</button>
 </div>
 <div *ngIf="emojiList">
   <cdk-virtual-scroll-viewport itemSize="80" class="">
-    <div class=" " *cdkVirtualFor="let emoji of emojiList; let i=index; let cuenta=count">
+    <div class="animated " [ngClass]="{fadeIn: emoji}" *cdkVirtualFor="let emoji of emojiList; let i=index; let cuenta=count">
       {{i}} - <span class="emoji">{{emoji}}</span>
     </div>
   </cdk-virtual-scroll-viewport>

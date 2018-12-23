@@ -33,3 +33,9 @@ cdk-virtual-scroll-viewport{
     animation-delay: 2s;
     animation-iteration-count: infinite;
 }
+
+.animated{
+    animation-duration: 500ms !important;
+    animation-delay: 0s !important;
+    animation-iteration-count: 1 !important;
+}
