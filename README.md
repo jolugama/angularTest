@@ -1,3 +1,3 @@
 # Angular test
 
-Ejemplos practicos sobre angular
+Ejemplos prácticos sobre angular
